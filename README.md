@@ -12,3 +12,10 @@ Yt é o preço do ativo no tempo;
 μ é o nível de reversão à média;
 σ é a volatilidade do processo;
 dWt é o termo de ruído aleatório, representando um movimento browniano.
+
+Indo mais a fundo, encontrei novos modelos, mais robustos. 
+Em especial, dois modelos de Séries Temporais me chamaram atenção:
+ARIMA (Autoregressive Integrated Moving Average) que em essência modela a relação entre valores atuais e passados de uma série;
+GARCH (Generalized Autoregressive Conditional Heteroskedasticity) que não se concentra em prever o preço ou o retorno em si, mas a volatilidade. 
+Percebi uma certa complementação entre os dois modelos e talvez aplicá-los conjuntamente seja uma ótima opção.
+
