@@ -1,0 +1,29 @@
+graph TD
+    subgraph Fase 1: Preparação
+        A[Início: Definir Ativo e Período de Tempo] --> B(Instalar as Bibliotecas: yfinance, pandas, pywt, arch, etc.);
+        B --> C(Coletar Dados Históricos do Ativo);
+        C --> D(Pré-processamento: Calcular Retornos Logarítmicos);
+    end
+
+    subgraph Fase 2: Backtest (Loop Principal)
+        E[Iniciar Loop de Backtest] --> F{Janela de Treino<br> ~1 ano de dados};
+        F --> G(Decomposição Wavelet da série temporal);
+        G --> H{Modelar Componentes Separadamente};
+        H --> I(Modelar Componente de Aproximação<br> com ARIMA);
+        H --> J(Modelar Componentes de Detalhe<br> com GARCH);
+        I --> K(Fazer Previsão de Retorno e Volatilidade);
+        J --> K;
+        K --> L(Recompor a Previsão Final);
+        L --> M(Gerar Sinal de Trading);
+        M --> N(Calcular Retorno da Estratégia);
+        N --> O{Avançar Janela de 1 Dia};
+        O --> P{Fim dos Dados?};
+        P -- Sim --> Q(Finalizar o Loop);
+        P -- Não --> F;
+    end
+
+    subgraph Fase 3: Análise e Visualização
+        Q --> R(Cálculo de Métricas de Desempenho<br>Sharpe, Drawdown, etc.);
+        R --> S(Visualização de Gráficos<br>Backtest vs. Buy and Hold);
+        S --> T[Conclusão e Otimização do Modelo];
+    end
